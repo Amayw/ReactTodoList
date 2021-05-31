@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.css'
 import {Button,Input,List,Typography} from 'antd';
 import store from './store';
+import Icon from './componnets/Icon'
 
 const WrapperStyle={
     display:'flex',
@@ -58,6 +59,7 @@ class TodoList extends Component {
                     renderItem={item => (
                         <List.Item>
                         <Typography.Text mark>[ITEM]</Typography.Text> {item}
+                        <Icon name='1' />
                         </List.Item>
                     )}
                 />
