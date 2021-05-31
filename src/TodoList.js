@@ -15,11 +15,32 @@ class TodoList extends Component {
         super(props);
         this.state=store.getState();
     }
+
+    componentDidMount(){
+        store.subscribe(this.storeChange)
+    }
+
+    changeInputValue=(e)=>{
+        const action={
+            type:'changeInput',
+            value:e.target.value
+        }
+        store.dispatch(action);
+    }
+
+    storeChange=()=>{
+        this.setState(store.getState());
+    }
     render() {
         return (
             <div style={WrapperStyle}>
                 <header>
-                    <Input placeholder={this.state.inputValue} style={{width:'250px',margin:'20px 10px 20px 0'}}/>
+                    <Input
+                        value={this.state.inputValue}
+                        placeholder={this.state.inputValue}
+                        style={{width:'250px',margin:'20px 10px 20px 0'}}
+                        onChange={this.changeInputValue}
+                    />
                     <Button type='primary'>Add</Button>
                 </header>
                 <main>
