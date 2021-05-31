@@ -1,5 +1,5 @@
 const defaultSate={
-    inputValue:'input',
+    inputValue:'Do Something~',
     list : [
         'Racing car sprays burning fuel into crowdRacing car sprays burning fuel into crowd.',
         'Japanese princess to wed commoner.',
@@ -29,6 +29,11 @@ const fn=(state=defaultSate,action)=>{
         newState.list.push(state.inputValue);
         newState.inputValue='';
         return newState
+    }
+    if(action.type==='deleteTodo'){
+        const newState={...state};
+        newState.list.splice(action.index,1);
+        return newState;
     }
     return state;
 }

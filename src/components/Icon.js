@@ -12,7 +12,7 @@ class Icon extends Component{
     render(){
         return (
             <>
-                <svg style={iconStyle} className="icon" aria-hidden="true">
+                <svg onClick={this.props.onClick} style={iconStyle} className="icon" aria-hidden="true">
                     <use xlinkHref={`#icon-${this.props.name}`}/>
                 </svg>
             </>
