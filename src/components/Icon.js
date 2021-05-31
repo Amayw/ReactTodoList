@@ -1,7 +1,4 @@
 import React,{Component} from 'react';
-import '../../icons/1.svg';
-import '../../icons/2.svg';
-import '../../icons/3.svg';
 
 const iconStyle={
     width: '1em',
@@ -11,14 +8,12 @@ const iconStyle={
     overflow: 'hidden',
 }
 class Icon extends Component{
-    constructor(props) {
-        super(props);
-    }
+
     render(){
         return (
             <>
                 <svg style={iconStyle} className="icon" aria-hidden="true">
-                    <use xlinkHref={this.props.name}/>
+                    <use xlinkHref={`#icon-${this.props.name}`}/>
                 </svg>
             </>
         )

@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css'
-import {Button,Input,List,Typography} from 'antd';
+import {Button,Input,List} from 'antd';
 import store from './store';
-import Icon from './componnets/Icon'
+import Icon from './components/Icon'
 
 const WrapperStyle={
     display:'flex',
     flexDirection:'column',
     alignItems:'center',
 }
-
 
 class TodoList extends Component {
     constructor(props){
@@ -54,12 +53,12 @@ class TodoList extends Component {
                 </header>
                 <main>
                 <List
-                    style={{paddingBottom:'50px'}}
+                    style={{paddingBottom:'50px',width:'318px'}}
                     dataSource={this.state.list}
                     renderItem={item => (
                         <List.Item>
-                        <Typography.Text mark>[ITEM]</Typography.Text> {item}
-                        <Icon name='1' />
+                         <span style={{width:'280px'}}>{item}</span>
+                         <Icon name='del3' />
                         </List.Item>
                     )}
                 />
