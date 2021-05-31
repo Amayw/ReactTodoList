@@ -28,9 +28,17 @@ class TodoList extends Component {
         store.dispatch(action);
     }
 
+    addTodo=()=>{
+        const action={
+            type:'addTodo'
+        }
+        store.dispatch(action);
+    }
+
     storeChange=()=>{
         this.setState(store.getState());
     }
+
     render() {
         return (
             <div style={WrapperStyle}>
@@ -41,7 +49,7 @@ class TodoList extends Component {
                         style={{width:'250px',margin:'20px 10px 20px 0'}}
                         onChange={this.changeInputValue}
                     />
-                    <Button type='primary'>Add</Button>
+                    <Button type='primary' onClick={this.addTodo}>Add</Button>
                 </header>
                 <main>
                 <List
