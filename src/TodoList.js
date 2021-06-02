@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.css'
 import {Button,Input,List} from 'antd';
 import store from './store';
-import Icon from './components/Icon'
+import Icon from './components/Icon';
+import {changeInputAction,addTodoAction,deleteTodoAction} from './store/actionCreators';
 
 const WrapperStyle={
     display:'flex',
@@ -21,25 +22,17 @@ class TodoList extends Component {
     }
 
     changeInputValue=(e)=>{
-        const action={
-            type:'changeInput',
-            value:e.target.value
-        }
+        const action=changeInputAction(e);
         store.dispatch(action);
     }
 
     addTodo=()=>{
-        const action={
-            type:'addTodo'
-        }
+        const action=addTodoAction();
         store.dispatch(action);
     }
 
     deleteTodo=(index)=>{
-        const action={
-            type:'deleteTodo',
-            index
-        }
+        const action=deleteTodoAction(index);
         store.dispatch(action);
     }
 
@@ -52,7 +45,7 @@ class TodoList extends Component {
             <div style={WrapperStyle}>
                 <header>
                     <Input
-                        value={this.state.inputValue}
+                        // value={this.state.inputValue}
                         placeholder={this.state.inputValue}
                         style={{width:'250px',margin:'20px 10px 20px 0'}}
                         onChange={this.changeInputValue}

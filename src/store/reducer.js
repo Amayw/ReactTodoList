@@ -1,3 +1,5 @@
+import {CHANGE_INPUT,ADD_TODO,DELETE_TODO} from './store/actionTypes'
+
 const defaultSate={
     inputValue:'Do Something~',
     list : [
@@ -16,7 +18,7 @@ const defaultSate={
 };
 
 const fn=(state=defaultSate,action)=>{
-    if(action.type==='changeInput'){
+    if(action.type===CHANGE_INPUT){
         //不能更改state
         const newState={
             ...state
@@ -24,13 +26,13 @@ const fn=(state=defaultSate,action)=>{
         newState.inputValue=action.value
         return newState;
     }
-    if(action.type==='addTodo'){
+    if(action.type===ADD_TODO){
         const newState={...state};
         newState.list.push(state.inputValue);
         newState.inputValue='';
         return newState
     }
-    if(action.type==='deleteTodo'){
+    if(action.type===DELETE_TODO){
         const newState={...state};
         newState.list.splice(action.index,1);
         return newState;
