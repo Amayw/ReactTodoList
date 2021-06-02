@@ -1,4 +1,4 @@
-import {CHANGE_INPUT,ADD_TODO,DELETE_TODO} from './store/actionTypes'
+import {CHANGE_INPUT,ADD_TODO,DELETE_TODO} from './actionTypes'
 
 const defaultSate={
     inputValue:'Do Something~',

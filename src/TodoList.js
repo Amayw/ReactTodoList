@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
-import 'antd/dist/antd.css'
-import {Button,Input,List} from 'antd';
 import store from './store';
-import Icon from './components/Icon';
 import {changeInputAction,addTodoAction,deleteTodoAction} from './store/actionCreators';
-
-const WrapperStyle={
-    display:'flex',
-    flexDirection:'column',
-    alignItems:'center',
-}
+import TodoListUI from './TodoListUI'
 
 class TodoList extends Component {
     constructor(props){
@@ -42,29 +34,13 @@ class TodoList extends Component {
 
     render() {
         return (
-            <div style={WrapperStyle}>
-                <header>
-                    <Input
-                        // value={this.state.inputValue}
-                        placeholder={this.state.inputValue}
-                        style={{width:'250px',margin:'20px 10px 20px 0'}}
-                        onChange={this.changeInputValue}
-                    />
-                    <Button type='primary' onClick={this.addTodo}>Add</Button>
-                </header>
-                <main>
-                <List
-                    style={{paddingBottom:'50px',width:'318px'}}
-                    dataSource={this.state.list}
-                    renderItem={(item,index) => (
-                        <List.Item>
-                         <span style={{width:'280px'}}>{item}</span>
-                         <Icon name='del3' onClick={()=>{this.deleteTodo(index)}}/>
-                        </List.Item>
-                    )}
-                />
-                </main>
-            </div>
+            <TodoListUI
+                inputValue={this.state.inputValue}
+                changeInputValue={this.changeInputValue}
+                addTodo={this.addTodo}
+                list={this.state.list}
+                deleteTodo={this.deleteTodo}
+            />
          )
     }
 }
