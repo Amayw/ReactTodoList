@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React from 'react';
 import {Button, Input, List} from 'antd';
 import 'antd/dist/antd.css'
 import Icon from './components/Icon';
@@ -10,37 +10,33 @@ const WrapperStyle={
 }
 
 
-class TodoListUI extends Component{
-    constructor(props) {
-        super(props);
-    }
+function TodoListUI(props){
 
-    render(){
         return (
             <div style={WrapperStyle}>
                 <header>
                     <Input
-                        placeholder={this.props.inputValue}
+                        value={props.inputValue}
+                        placeholder={props.inputValue}
                         style={{width:'250px',margin:'20px 10px 20px 0'}}
-                        onChange={(e)=>this.props.changeInputValue(e)}
+                        onChange={(e)=>props.changeInputValue(e)}
                     />
-                    <Button type='primary' onClick={this.props.addTodo}>Add</Button>
+                    <Button type='primary' onClick={props.addTodo}>Add</Button>
                 </header>
                 <main>
                     <List
-                        style={{paddingBottom:'50px',width:'318px'}}
-                        dataSource={this.props.list}
+                        style={{paddingBottom:'500px',width:'318px'}}
+                        dataSource={props.list}
                         renderItem={(item,index) => (
                             <List.Item>
                                 <span style={{width:'280px'}}>{item}</span>
-                                <Icon name='del3' onClick={(index)=>{this.props.deleteTodo(index)}}/>
+                                <Icon name='del3' onClick={()=>{props.deleteTodo(index)}}/>
                             </List.Item>
                         )}
                     />
                 </main>
             </div>
         )
-    }
 }
 
 export default TodoListUI;
